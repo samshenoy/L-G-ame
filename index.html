@@ -1,0 +1,211 @@
+<style>
+.nav{
+    display: flex;
+    flex-direction: row;
+    font-family:Georgia;
+    box-shadow:2px 2px 2px red ;
+    margin-left:50%;
+    margin-right: 50%;
+    position: fixed;
+    left: 50%;
+}
+.btn:hover{
+    color:rgb(92, 14, 116);
+    background-color: rgb(240, 187, 205);
+    }
+.btn{
+    border-radius: 30.5%;
+    padding: 20px;
+    background-color: crimson;
+    position:relative;
+    left:40%;
+    display:flex;
+    flex-direction:row;
+    margin-top:1%;
+    margin-bottom: 2%;
+    align-items: baseline;
+    font-family:Georgia;
+    box-shadow:2px 2px 2px red ;
+}
+</style>
+
+<title>😀😀L-G AME😀😀</title>
+<!--nav bar-->
+<div class="nav">
+<a href="#HOME" ><button >HOME</button></a>
+<a href="#ABOUT"><button >ABOUT</button></a>
+<a href="#CONTACT"><button >CONTACT</button></a>
+</div>
+
+<!--main code-->
+<body style="background-color: plum;">
+<h1 style="position:relative; left:40%;">L/G AME</h1>
+<img src="https://i.ytimg.com/vi/Kp2bYWRQylk/maxresdefault.jpg" width="200" class="btn" style="background-color:white"/>
+<button id=3 class="btn">MATH QUIZ</button>
+<img src="https://www.esquireme.com/public/styles/full_img/public/images/2017/05/29/rock_paper_scissors__2x.png?itok=7H3NxSxN" width="200" class="btn" style="background-color:white"/>
+<button id=4 class="btn" >ROCK PAPER SCISSORS</button>
+<img src="https://i.pinimg.com/474x/99/d9/23/99d9239aafdc5dd180eeae9bc30dcc6a.jpg" width="200" class="btn" style="background-color:white"/>
+<button id=6 class="btn" >  GUESS THE NUMBER</button>
+<img src="https://images-eu.ssl-images-amazon.com/images/I/71oPgsbIswL.png" width="200" class="btn" style="background-color:white"/>
+<button id=7 class="btn" >HANGMAN</button>
+<button id=5 class="btn">RATE</button>
+<div><ul id="messages" class="btn" style="background-color:plum;border-radius: 0%;"></ul></div>
+<textarea id="textbox" class="btn" placeholder="please comment" style="background-color: white;border-radius: 0%;"></textarea>
+<button id="button" class="btn">submit</button>
+</body>
+
+
+<script>
+    // MATH QUIZ GAME
+    var button = document.getElementById(3)
+    button.addEventListener("click",function(){
+        var num = parseInt(Math.round(Math.random()*100));
+        var num2 = parseInt(Math.round(Math.random()*100));
+        var user_answer = parseInt(window.prompt("what is " + num + " + " + num2));
+        var answer =  num + num2;
+        if (user_answer == answer){
+             alert("good job");
+        }else{
+            alert("wrong correct answer is " + answer);
+        }
+    })
+    // -----------------------
+
+
+    // rock paper scissors
+    var button = document.getElementById(4)
+    button.addEventListener("click",function(){
+    var opt = ['r','p','s']
+    var comp = Math.round(Math.random()*2)
+    var uopt = window.prompt("choose rock(r),paper(p),scissors(s)" + opt[comp])
+
+    if (opt[comp] == 'r' && uopt == 'p'){
+        alert("you win i put " + opt[comp])
+    }
+    else if (opt[comp] == 'p' && uopt == 's'){
+        alert("you win i put " + opt[comp])
+    }
+    else if (opt[comp] == 's' && uopt == 'r'){
+        alert("you win i put " + opt[comp])
+    }else if(opt[comp] == uopt){
+        alert("tie i put " + opt[comp])
+    }
+    else{
+        alert("you lose , i put " + opt[comp])
+    }
+})
+// -----------------------------------------
+
+//rate
+var rate = document.getElementById(5)
+rate.addEventListener("click",function(){
+    var ratebox  = parseInt(window.prompt("please rate us for 1 - 5 stars")); 
+    while(ratebox <= -1 || ratebox >= 6){
+        var ratebox = parseInt(window.prompt("Invalid rating , please rate us for 1 - 5 stars"));
+}
+function get_Reaction(ratebox){
+    var reaction;
+    switch(ratebox){
+        case 0:
+            reaction = "I am so sorry for your bad experience.please tell  us our flaw in comments"
+            break
+        case 1:
+            reaction = "I am sorry for your bad experiece , please comment our flaws"
+            break
+        case 2:
+            reaction = "I am sorry , please rate our flaws in comments"
+            break
+        case 3:
+            reaction = "thanks , please tell us what you like and did not like"
+            break
+        case 4:
+            reaction = "thanks  for your rating"
+            break
+        case 5:
+            reaction = "thanks a lot"
+            break
+    }
+    return reaction
+}
+alert(get_Reaction(ratebox))
+})
+
+//  guess the number
+var button = document.getElementById(6)
+button.addEventListener("click",function(){
+    var number = Math.round(Math.random()*100)
+    var lives = 5
+    var guess = window.prompt("guess the number from 0 to 100; " + lives + number)
+    while (guess !=  number && lives > 0 ){
+        if (guess < number){
+            guess = window.prompt("too low; " + lives)
+            lives --;
+    }   else if( guess > number){
+            guess = window.prompt("too high; " + lives)  
+            lives --;
+    }
+}
+    if (lives > 0){
+        alert("yes good the number is " + number)
+    }else if(lives <= 1){
+        alert("you lost number was " + number)}
+    })
+
+//comments
+var messages = document.getElementById("messages");
+var textbox = document.getElementById("textbox");
+var button = document.getElementById("button");
+
+button.addEventListener("click",function(){
+var newmessage = document.createElement("li");
+newmessage.innerHTML = textbox.value;
+messages.appendChild(newmessage);
+textbox.value="";
+});
+
+//----------------------------------------
+
+//Hangman
+var button = document.getElementById(7)
+button.addEventListener("click",function(){
+console.log("Hangman")
+
+var names = ["ham","jug","egg","cat","mat","rat","hen","one","bun","mug","man","hat","fan","den","cut","tab"]
+var lives = 5
+var name = names[Math.round(Math.random()*16)]
+var letters =  name.length
+var clue = ["?" ,  "?" , "?" ] 
+while (true){
+    var guess = window.prompt("make a guess of the word    " + clue + "  ; lives: " + lives)
+
+    if (guess == name || letters <= 0) {
+        alert("goood the correct letter is " +  name)
+        break
+
+    }else if(name.indexOf(guess) !== -1){
+        index = 0 
+        while(index < 3){
+        for(var i=0 ;i < name.length; i++){
+            if (name[i] == guess && index < 3){
+               clue[i] = guess
+               index = 3
+               letters -= 1
+               break
+
+            }else{
+                index += 1
+            }
+            }
+        
+        }
+    }else{
+        alert("wrong ")
+        lives -= 1
+    }
+    if (lives == 0 ){
+        alert("your OUT , the correct word is  " + name)
+        break
+    }
+}
+})
+</script>
