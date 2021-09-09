@@ -77,7 +77,7 @@
     button.addEventListener("click",function(){
     var opt = ['r','p','s']
     var comp = Math.round(Math.random()*2)
-    var uopt = window.prompt("choose rock(r),paper(p),scissors(s)" + opt[comp])
+    var uopt = window.prompt("choose rock(r),paper(p),scissors(s)")
 
     if (opt[comp] == 'r' && uopt == 'p'){
         alert("you win i put " + opt[comp])
@@ -135,7 +135,7 @@ var button = document.getElementById(6)
 button.addEventListener("click",function(){
     var number = Math.round(Math.random()*100)
     var lives = 5
-    var guess = window.prompt("guess the number from 0 to 100; " + lives + number)
+    var guess = window.prompt("guess the number from 0 to 100; " + lives)
     while (guess !=  number && lives > 0 ){
         if (guess < number){
             guess = window.prompt("too low; " + lives)
